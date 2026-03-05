@@ -1,0 +1,22 @@
+## Các mã trạng thái HTTP phổ biến
+
+### 1. 4xx - Lỗi từ Client
+
+- 401 - Unauthorized: Hệ thống không xác thực được người dùng là ai
+- 400 - Bad Request: Request gửi về server sai(sai cú pháp, thiếu body,..)
+- 403 - Forbidden: Có xác thực nhưng không có quyền truy cập
+- 404 - Not Found: Không tìm thấy resource
+- 405 - Endpoint tồn tại nhưng method không được phép
+
+### 2. 5xx - Lỗi từ Server
+
+- 500 – Internal Server Error: Lỗi chung của server
+- 503 - Service Unavailable: Server tạm thời không phục vụ
+- 504 – Gateway Timeout: Gateway chờ backend quá lâu
+
+### 3. 2xx - Phản hồi thành công
+
+- 200 – OK: Request thành công và server trả dữ liệu
+- 201 – Created: Resource mới đã được tạo thành công
+- 202 – Accepted: Request đã được nhận nhưng chưa xử lý xong
+- 204 – No Content: Request thành công nhưng không trả dữ liệu
