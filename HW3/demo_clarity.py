@@ -21,7 +21,6 @@ def v3_update_task_status(task_id):
     task = next((t for t in PROJECT_TASKS if t['id'] == task_id), None)
 
     if not task:
-        # Lỗi rõ ràng, dễ hiểu cho Frontend
         return format_response(
             error={
                 "code": "TASK_NOT_FOUND",
