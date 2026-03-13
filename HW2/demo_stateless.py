@@ -17,11 +17,18 @@ def login():
     if not username or users.get(username) != password:
         return jsonify({"error": "Invalid credentials"}), 401
 
+    #tạo payload dựa trên data là user và thời gian
     payload = {
         "user": username,
         "exp": datetime.now(tz=timezone.utc) + timedelta(minutes=10)
     }
 
+    #mã hóa data thành jwt với format header.payload.signature
+    #header chứa thuật toán sử dụng để ký theo
+    #HMACSHA256(
+    #   base64UrlEncode(header) + "." + base64UrlEncode(payload),
+    #   secret_key
+    # )
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
     return jsonify({"token": token})
 
