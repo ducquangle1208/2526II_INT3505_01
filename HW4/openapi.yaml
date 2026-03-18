@@ -1,0 +1,91 @@
+definitions: {}
+info:
+  description: powered by Flasgger
+  termsOfService: /tos
+  title: A swagger API
+  version: 0.0.1
+paths:
+  /books:
+    get:
+      responses:
+        '200':
+          description: Một danh sách chứa các cuốn sách
+          schema:
+            items:
+              properties:
+                author:
+                  type: string
+                id:
+                  type: integer
+                title:
+                  type: string
+              type: object
+            type: array
+      summary: Lấy danh sách tất cả các sách
+    post:
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          properties:
+            author:
+              example: Erich Gamma
+              type: string
+            title:
+              example: Design Patterns
+              type: string
+          type: object
+      responses:
+        '201':
+          description: Sách đã được tạo thành công
+      summary: Thêm một cuốn sách mới
+  /books/{book_id}:
+    delete:
+      parameters:
+      - description: ID của cuốn sách cần xóa
+        in: path
+        name: book_id
+        required: true
+        type: integer
+      responses:
+        '200':
+          description: Đã xóa sách thành công
+      summary: Xóa một cuốn sách
+    get:
+      parameters:
+      - description: ID của cuốn sách cần tìm
+        in: path
+        name: book_id
+        required: true
+        type: integer
+      responses:
+        '200':
+          description: Thông tin cuốn sách
+        '404':
+          description: Không tìm thấy sách
+      summary: Lấy thông tin một cuốn sách theo ID
+    put:
+      parameters:
+      - description: ID của cuốn sách cần cập nhật
+        in: path
+        name: book_id
+        required: true
+        type: integer
+      - in: body
+        name: body
+        required: true
+        schema:
+          properties:
+            author:
+              type: string
+            title:
+              type: string
+          type: object
+      responses:
+        '200':
+          description: Sách đã được cập nhật
+        '404':
+          description: Không tìm thấy sách
+      summary: Cập nhật thông tin một cuốn sách
+swagger: '2.0'
