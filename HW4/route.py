@@ -2,7 +2,24 @@ from flask import Flask, jsonify, request
 from flasgger import Swagger
 
 app = Flask(__name__)
-swagger = Swagger(app)
+
+openapi_template = {
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Books Management API",
+        "description": "API quản lý sách cơ bản viết bằng Flask",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000",
+            "description": "Local server"
+        }
+    ]
+}
+
+swagger = Swagger(app, template=openapi_template)
+
 
 books = [
     {"id": 1, "title": "Clean Code", "author": "Robert C. Martin"},
