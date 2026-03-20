@@ -10,9 +10,8 @@ info = Info(
     version="1.0.0"
 )
 servers = [
-    Server(url="http://localhost:5000", description="💻 Local Development Server"),
-    Server(url="http://123.45.67.89:8000", description="🧪 Staging/Test Server (Cổng 8000)"),
-    Server(url="https://api.yourdomain.com", description="🚀 Production Server")
+    Server(url="http://localhost:5000", description="Local Development Server"),
+    Server(url="https://2526-ii-int-3505-01-acj2.vercel.app/openapi/swagger", description="Production Server")
 ]
 
 #Dùng OpenAPI() thay Flask() -> tự động sinh spec
