@@ -1,0 +1,5 @@
+Flask
+flask-cors
+flask-openapi3[swagger,redoc,scalar]
+pydantic[email]
+gunicorn

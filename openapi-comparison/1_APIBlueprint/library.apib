@@ -1,0 +1,146 @@
+FORMAT: 1A
+HOST: http://localhost:5000
+
+# Library Management API
+
+API mau cho ung dung quan ly thu vien.
+
+# Group Books
+
+## Books Collection [/books]
+
+### List Books [GET]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "id": 1,
+            "title": "Clean Code",
+            "author": "Robert C. Martin",
+            "available": true
+          }
+        ]
+
+### Create Book [POST]
+
++ Request (application/json)
+
+        {
+          "title": "Domain-Driven Design",
+          "author": "Eric Evans"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "id": 2,
+          "title": "Domain-Driven Design",
+          "author": "Eric Evans",
+          "available": true
+        }
+
+## Book Detail [/books/{bookId}]
+
++ Parameters
+    + bookId: 1 (number, required) - ID cua sach
+
+### Get Book [GET]
+
++ Response 200 (application/json)
+
+        {
+          "id": 1,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "available": true
+        }
+
++ Response 404 (application/json)
+
+        {
+          "message": "Book not found"
+        }
+
+# Group Members
+
+## Members Collection [/members]
+
+### List Members [GET]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "id": 1,
+            "name": "Nguyen Van A",
+            "email": "a@example.com"
+          }
+        ]
+
+### Create Member [POST]
+
++ Request (application/json)
+
+        {
+          "name": "Tran Thi B",
+          "email": "b@example.com"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "id": 2,
+          "name": "Tran Thi B",
+          "email": "b@example.com"
+        }
+
+# Group Loans
+
+## Loans Collection [/loans]
+
+### Create Loan [POST]
+
++ Request (application/json)
+
+        {
+          "bookId": 1,
+          "memberId": 2
+        }
+
++ Response 201 (application/json)
+
+        {
+          "id": 1,
+          "bookId": 1,
+          "memberId": 2,
+          "status": "borrowed"
+        }
+
++ Response 400 (application/json)
+
+        {
+          "message": "Book is not available"
+        }
+
+## Return Loan [/loans/{loanId}/return]
+
++ Parameters
+    + loanId: 1 (number, required) - ID cua phieu muon
+
+### Return Book [PATCH]
+
++ Response 200 (application/json)
+
+        {
+          "id": 1,
+          "bookId": 1,
+          "memberId": 2,
+          "status": "returned"
+        }
+
++ Response 404 (application/json)
+
+        {
+          "message": "Loan not found"
+        }

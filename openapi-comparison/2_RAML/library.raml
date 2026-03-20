@@ -1,0 +1,122 @@
+#%RAML 1.0
+title: Library Management API
+version: v1
+baseUri: http://localhost:5000
+mediaType: application/json
+
+types:
+  Book:
+    type: object
+    properties:
+      id: integer
+      title: string
+      author: string
+      available: boolean
+  CreateBookRequest:
+    type: object
+    properties:
+      title: string
+      author: string
+  Member:
+    type: object
+    properties:
+      id: integer
+      name: string
+      email: string
+  CreateMemberRequest:
+    type: object
+    properties:
+      name: string
+      email: string
+  Loan:
+    type: object
+    properties:
+      id: integer
+      bookId: integer
+      memberId: integer
+      status: string
+  CreateLoanRequest:
+    type: object
+    properties:
+      bookId: integer
+      memberId: integer
+  ErrorResponse:
+    type: object
+    properties:
+      message: string
+
+/books:
+  get:
+    description: Lay danh sach sach
+    responses:
+      200:
+        body:
+          type: Book[]
+  post:
+    description: Tao sach moi
+    body:
+      type: CreateBookRequest
+    responses:
+      201:
+        body:
+          type: Book
+      400:
+        body:
+          type: ErrorResponse
+
+/books/{bookId}:
+  uriParameters:
+    bookId:
+      type: integer
+  get:
+    description: Lay chi tiet sach
+    responses:
+      200:
+        body:
+          type: Book
+      404:
+        body:
+          type: ErrorResponse
+
+/members:
+  get:
+    description: Lay danh sach doc gia
+    responses:
+      200:
+        body:
+          type: Member[]
+  post:
+    description: Tao doc gia moi
+    body:
+      type: CreateMemberRequest
+    responses:
+      201:
+        body:
+          type: Member
+
+/loans:
+  post:
+    description: Tao phieu muon sach
+    body:
+      type: CreateLoanRequest
+    responses:
+      201:
+        body:
+          type: Loan
+      400:
+        body:
+          type: ErrorResponse
+
+/loans/{loanId}/return:
+  uriParameters:
+    loanId:
+      type: integer
+  patch:
+    description: Danh dau da tra sach
+    responses:
+      200:
+        body:
+          type: Loan
+      404:
+        body:
+          type: ErrorResponse

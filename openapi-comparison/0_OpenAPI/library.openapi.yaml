@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Library Management API
+  version: 1.0.0
+  summary: API quan ly sach, doc gia va muon tra sach
+  description: |
+    API mau cho ung dung quan ly thu vien nho.
+servers:
+  - url: http://localhost:5000
+tags:
+  - name: Books
+  - name: Members
+  - name: Loans
+paths:
+  /books:
+    get:
+      tags: [Books]
+      summary: Lay danh sach sach
+      responses:
+        '200':
+          description: Danh sach sach
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      tags: [Books]
+      summary: Tao sach moi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBookRequest'
+      responses:
+        '201':
+          description: Tao thanh cong
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '400':
+          description: Du lieu khong hop le
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /books/{bookId}:
+    get:
+      tags: [Books]
+      summary: Lay chi tiet sach
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Thong tin sach
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Khong tim thay sach
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /members:
+    get:
+      tags: [Members]
+      summary: Lay danh sach doc gia
+      responses:
+        '200':
+          description: Danh sach doc gia
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member'
+    post:
+      tags: [Members]
+      summary: Tao doc gia moi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMemberRequest'
+      responses:
+        '201':
+          description: Tao thanh cong
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member'
+  /loans:
+    post:
+      tags: [Loans]
+      summary: Tao phieu muon sach
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLoanRequest'
+      responses:
+        '201':
+          description: Tao thanh cong
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '400':
+          description: Khong the muon sach
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /loans/{loanId}/return:
+    patch:
+      tags: [Loans]
+      summary: Danh dau da tra sach
+      parameters:
+        - in: path
+          name: loanId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Cap nhat thanh cong
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '404':
+          description: Khong tim thay phieu muon
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Book:
+      type: object
+      required: [id, title, author, available]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+        available:
+          type: boolean
+    CreateBookRequest:
+      type: object
+      required: [title, author]
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+    Member:
+      type: object
+      required: [id, name, email]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    CreateMemberRequest:
+      type: object
+      required: [name, email]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    Loan:
+      type: object
+      required: [id, bookId, memberId, status]
+      properties:
+        id:
+          type: integer
+        bookId:
+          type: integer
+        memberId:
+          type: integer
+        status:
+          type: string
+          enum: [borrowed, returned]
+    CreateLoanRequest:
+      type: object
+      required: [bookId, memberId]
+      properties:
+        bookId:
+          type: integer
+        memberId:
+          type: integer
+    ErrorResponse:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
