@@ -2,7 +2,7 @@ import yaml
 from app import app
 
 def export_openapi_yaml():
-    print("⏳ Đang trích xuất cấu hình OpenAPI...")
+    print("Đang trích xuất cấu hình OpenAPI...")
 
     with app.test_client() as client:
         response = client.get('/openapi/openapi.json')

@@ -1,6 +1,7 @@
 from flask_openapi3 import OpenAPI, Info, Tag, Server
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 from typing import List
+from flask_cors import CORS
 
 #Metadata trong SwaggerUI
 info = Info(
@@ -8,10 +9,15 @@ info = Info(
     description="API quản lý sách sử dụng Flask-OpenAPI3 và Pydantic",
     version="1.0.0"
 )
-servers = [Server(url="http://localhost:5000", description="Local Server")]
+servers = [
+    Server(url="http://localhost:5000", description="💻 Local Development Server"),
+    Server(url="http://123.45.67.89:8000", description="🧪 Staging/Test Server (Cổng 8000)"),
+    Server(url="https://api.yourdomain.com", description="🚀 Production Server")
+]
 
 #Dùng OpenAPI() thay Flask() -> tự động sinh spec
 app = OpenAPI(__name__, info=info, servers=servers)
+CORS(app)
 book_tag = Tag(name="Books", description="Các thao tác quản lý sách")
 
 #Định nghĩa Schema bằng Pydantic
