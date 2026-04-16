@@ -1,0 +1,19 @@
+{
+  "name": "hw7-products-api",
+  "version": "1.0.0",
+  "description": "Products CRUD API generated from OpenAPI and backed by MongoDB",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-openapi-validator": "^5.4.0",
+    "js-yaml": "^4.1.0",
+    "mongodb": "^7.1.1",
+    "mongoose": "^8.13.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
