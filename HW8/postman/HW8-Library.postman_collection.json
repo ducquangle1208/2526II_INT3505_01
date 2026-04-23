@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "c3e98d2c-c1cf-4878-8f7b-4b390f1c0001",
+    "name": "HW8 Library API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman test suite cho 5 endpoint quan ly thu vien trong HW8."
+  },
+  "item": [
+    {
+      "name": "1. Get All Books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const data = pm.response.json();",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    pm.expect(data).to.be.an('array');",
+              "});",
+              "",
+              "pm.test(\"Seed data exists\", function () {",
+              "    pm.expect(data.length).to.be.greaterThan(0);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Create Book",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "const data = pm.response.json();",
+              "pm.collectionVariables.set(\"bookId\", data.id);",
+              "",
+              "pm.test(\"Created book has required fields\", function () {",
+              "    pm.expect(data).to.have.property('id');",
+              "    pm.expect(data.title).to.eql('Domain-Driven Design');",
+              "    pm.expect(data.author).to.eql('Eric Evans');",
+              "    pm.expect(data.published_year).to.eql(2003);",
+              "    pm.expect(data.genre).to.eql('Software Architecture');",
+              "    pm.expect(data.available).to.eql(true);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Domain-Driven Design\",\n  \"author\": \"Eric Evans\",\n  \"published_year\": 2003,\n  \"genre\": \"Software Architecture\",\n  \"available\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Book By ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const data = pm.response.json();",
+              "",
+              "pm.test(\"Returned book matches created record\", function () {",
+              "    pm.expect(String(data.id)).to.eql(String(pm.collectionVariables.get('bookId')));",
+              "    pm.expect(data.title).to.eql('Domain-Driven Design');",
+              "    pm.expect(data.author).to.eql('Eric Evans');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "{{bookId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update Book",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const data = pm.response.json();",
+              "",
+              "pm.test(\"Book updated successfully\", function () {",
+              "    pm.expect(String(data.id)).to.eql(String(pm.collectionVariables.get('bookId')));",
+              "    pm.expect(data.title).to.eql('Refactoring');",
+              "    pm.expect(data.author).to.eql('Martin Fowler');",
+              "    pm.expect(data.published_year).to.eql(2018);",
+              "    pm.expect(data.genre).to.eql('Programming');",
+              "    pm.expect(data.available).to.eql(false);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Refactoring\",\n  \"author\": \"Martin Fowler\",\n  \"published_year\": 2018,\n  \"genre\": \"Programming\",\n  \"available\": false\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "{{bookId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Delete Book",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const data = pm.response.json();",
+              "",
+              "pm.test(\"Delete response is correct\", function () {",
+              "    pm.expect(data.message).to.eql('Book deleted');",
+              "    pm.expect(String(data.id)).to.eql(String(pm.collectionVariables.get('bookId')));",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "{{bookId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "bookId",
+      "value": ""
+    }
+  ]
+}
