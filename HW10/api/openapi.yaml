@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  description: Title
+  title: Title
+  version: 1.0.0
+servers:
+  - url: https
+paths:
+  /products:
+    get:
+      operationId: app.get_products
+      responses:
+        "200":
+          description: OK
+      x-eov-operation-handler: controllers/DefaultController
+    post:
+      operationId: app.create_product
+      x-codegen-request-body-name: product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductInput"
+        required: true
+      responses:
+        "200":
+          description: Created
+      x-eov-operation-handler: controllers/DefaultController
+  /products/{id}:
+    delete:
+      operationId: app.delete_product
+      parameters:
+        - explode: false
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        "200":
+          description: Deleted
+      x-eov-operation-handler: controllers/DefaultController
+    put:
+      operationId: app.update_product
+      x-codegen-request-body-name: product
+      parameters:
+        - explode: false
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductInput"
+        required: true
+      responses:
+        "200":
+          description: Updated
+      x-eov-operation-handler: controllers/DefaultController
+components:
+  schemas:
+    Product:
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - _id
+        - name
+        - price
+      type: object
+    ProductInput:
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        description:
+          type: string
+      required:
+        - name
+        - price
+      type: object
