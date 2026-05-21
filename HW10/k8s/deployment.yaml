@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw10-deployment
+  labels:
+    app: hw10
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hw10
+  template:
+    metadata:
+      labels:
+        app: hw10
+      annotations:
+        # Tự động cho phép Prometheus thu thập metrics
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: hw10-app
+        image: hw10-app:latest # Thay bằng image thực tế sau khi push lên Registry
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw10-service
+spec:
+  selector:
+    app: hw10
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

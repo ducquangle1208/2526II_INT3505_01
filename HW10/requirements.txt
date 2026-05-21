@@ -1,0 +1,6 @@
+flask
+flask-openapi3
+prometheus-flask-exporter
+Flask-Limiter
+pydantic
+email-validator
