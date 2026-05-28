@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portal - AI E-Commerce API Suite</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Cổng thông tin nhà phát triển cho hệ thống AI E-Commerce API. Tích hợp Sandbox, tài liệu API tương tác và bộ công cụ tính giá thông minh.">
+  <meta name="keywords" content="AI E-Commerce API, Developer Portal, API Sandbox, API Docs, API Monetization">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Top Glassmorphic Navigation Header -->
+  <header class="main-header" id="main-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <div class="logo-icon-wrapper">
+          <i data-lucide="cpu" class="logo-icon"></i>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">AI E-COMMERCE</span>
+          <span class="brand-sub">DEVELOPER PORTAL</span>
+        </div>
+      </div>
+      
+      <!-- Desktop Navigation Tabs -->
+      <nav class="nav-tabs" id="navigation-tabs" role="tablist">
+        <button class="tab-btn active" id="tab-btn-overview" data-target="tab-overview" role="tab" aria-selected="true">
+          <i data-lucide="layout-dashboard"></i> Tổng quan & Bảng giá
+        </button>
+        <button class="tab-btn" id="tab-btn-docs" data-target="tab-docs" role="tab" aria-selected="false">
+          <i data-lucide="book-open"></i> Tài liệu API (Docs)
+        </button>
+        <button class="tab-btn" id="tab-btn-sandbox" data-target="tab-sandbox" role="tab" aria-selected="false">
+          <i data-lucide="terminal"></i> Sandbox Playground
+        </button>
+      </nav>
+
+      <!-- Portal Utilities -->
+      <div class="header-actions">
+        <div class="api-status-badge">
+          <span class="status-dot pulsing"></span>
+          <span class="status-label">Sandbox: Online</span>
+        </div>
+        <button class="btn-primary" id="btn-get-key" onclick="scrollToCalculator()">
+          <i data-lucide="key"></i> Nhận API Key
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="content-wrapper">
+
+    <!-- TAB 1: OVERVIEW & STRATEGY & MONETIZATION -->
+    <section id="tab-overview" class="tab-content active" role="tabpanel">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+          <div class="badge-new">NEW VERSION 1.2</div>
+          <h1 class="hero-title">Đột Phá Doanh Số Với<br><span class="gradient-text">E-Commerce API Tích Hợp AI</span></h1>
+          <p class="hero-subtitle">Tích hợp tìm kiếm thông minh bằng AI, cá nhân hóa đề xuất sản phẩm và cổng thanh toán tự động chỉ trong vài dòng code.</p>
+          <div class="hero-cta-buttons">
+            <button class="btn-primary btn-lg" onclick="switchTab('tab-docs')">
+              <i data-lucide="arrow-right"></i> Bắt đầu tích hợp ngay
+            </button>
+            <button class="btn-secondary btn-lg" onclick="switchTab('tab-sandbox')">
+              <i data-lucide="play-circle"></i> Thử nghiệm Sandbox
+            </button>
+          </div>
+        </div>
+        <!-- Real-time Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-box"><i data-lucide="activity"></i></div>
+            <div class="stat-info">
+              <span class="stat-val">99.99%</span>
+              <span class="stat-label">Uptime Hệ Thống</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box"><i data-lucide="zap"></i></div>
+            <div class="stat-info">
+              <span class="stat-val">&lt; 45ms</span>
+              <span class="stat-label">Thời gian phản hồi</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box"><i data-lucide="users"></i></div>
+            <div class="stat-info">
+              <span class="stat-val">12.5k+</span>
+              <span class="stat-label">Developers tin dùng</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Launch Strategy Section -->
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-tag">LAUNCH TIMELINE</div>
+          <h2 class="section-title">Chiến Lược Ra Mắt API 3 Giai Đoạn</h2>
+          <p class="section-desc">Lộ trình triển khai vững chắc, ưu tiên bảo mật dữ liệu và trải nghiệm lập trình viên tối đa.</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Phase 1 -->
+          <div class="timeline-item">
+            <div class="timeline-number">01</div>
+            <div class="timeline-content-card">
+              <span class="phase-tag completed">Đã hoàn thành</span>
+              <h3>Giai đoạn 1: Private Alpha / Closed Beta</h3>
+              <p>Mở rộng thử nghiệm nội bộ với 15 lập trình viên đối tác chiến lược để kiểm thử schema API, các tham số hồi đáp, cấu trúc JSON và vá lỗi bảo mật.</p>
+              <ul class="phase-bullets">
+                <li><i data-lucide="check-circle" class="icon-success"></i> Kiểm định hiệu năng Database</li>
+                <li><i data-lucide="check-circle" class="icon-success"></i> Thử nghiệm phân cấp Token</li>
+                <li><i data-lucide="check-circle" class="icon-success"></i> Tối ưu GPU cho các tác vụ AI</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="timeline-item active">
+            <div class="timeline-glow"></div>
+            <div class="timeline-number">02</div>
+            <div class="timeline-content-card">
+              <span class="phase-tag ongoing">Đang diễn ra</span>
+              <h3>Giai đoạn 2: Public Beta (Hiện tại)</h3>
+              <p>Ra mắt Cổng thông tin (Developer Portal) tự phục vụ, môi trường giả lập (Sandbox Playground) miễn phí và bộ tài liệu hướng dẫn đầy đủ.</p>
+              <ul class="phase-bullets">
+                <li><i data-lucide="play" class="icon-ongoing"></i> Miễn phí 1,000 requests Sandbox</li>
+                <li><i data-lucide="play" class="icon-ongoing"></i> Hệ thống tự cấp phát API Key</li>
+                <li><i data-lucide="play" class="icon-ongoing"></i> Kênh Discord hỗ trợ cộng đồng</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="timeline-item">
+            <div class="timeline-number">03</div>
+            <div class="timeline-content-card">
+              <span class="phase-tag upcoming">Sắp diễn ra</span>
+              <h3>Giai đoạn 3: General Availability (GA)</h3>
+              <p>Chính thức thương mại hóa các gói dịch vụ có cam kết SLA 99.99%, hỗ trợ kỹ thuật 24/7 chuyên sâu và phân chia luồng GPU chuyên biệt cho doanh nghiệp.</p>
+              <ul class="phase-bullets">
+                <li><i data-lucide="calendar" class="icon-upcoming"></i> Dự kiến ra mắt: Q3/2026</li>
+                <li><i data-lucide="calendar" class="icon-upcoming"></i> Tích hợp cổng thanh toán Visa/Momo</li>
+                <li><i data-lucide="calendar" class="icon-upcoming"></i> Cung cấp SDK Node.js, Python, Go</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monetization & Pricing Section -->
+      <div class="section-container" id="monetization-section">
+        <div class="section-header">
+          <div class="section-tag">API MONETIZATION</div>
+          <h2 class="section-title">Mô Hình Kiếm Tiền Linh Hoạt</h2>
+          <p class="section-desc">Chúng tôi áp dụng mô hình **Hybrid (Thuê bao cố định + Pay-per-call vượt hạn mức)** mang lại tính dự báo chi phí cao cùng khả năng mở rộng không giới hạn.</p>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+          <!-- Free Plan -->
+          <div class="pricing-card" id="price-card-free">
+            <div class="plan-header">
+              <span class="plan-name">Sandbox / Free</span>
+              <div class="plan-price"><span class="currency">$</span>0<span class="period">/tháng</span></div>
+              <p class="plan-summary">Dành cho việc thử nghiệm, phát triển phần mềm và học tập cá nhân.</p>
+            </div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><i data-lucide="check" class="icon-check"></i> <strong>1,000</strong> requests/tháng</li>
+              <li><i data-lucide="check" class="icon-check"></i> Truy cập toàn bộ 3 API AI</li>
+              <li><i data-lucide="check" class="icon-check"></i> Môi trường Sandbox giả lập</li>
+              <li class="disabled"><i data-lucide="x" class="icon-x"></i> Không hỗ trợ gọi vượt hạn mức</li>
+              <li class="disabled"><i data-lucide="x" class="icon-x"></i> Không cam kết SLA</li>
+            </ul>
+            <button class="btn-secondary btn-full" onclick="switchTab('tab-sandbox')">Dùng Thử Miễn Phí</button>
+          </div>
+
+          <!-- Developer Plan -->
+          <div class="pricing-card recommended" id="price-card-dev">
+            <div class="popular-badge">KHUYÊN DÙNG</div>
+            <div class="plan-header">
+              <span class="plan-name">Developer</span>
+              <div class="plan-price"><span class="currency">$</span>29<span class="period">/tháng</span></div>
+              <p class="plan-summary">Tuyệt vời cho các dự án thương mại vừa và nhỏ mới khởi chạy.</p>
+            </div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><i data-lucide="check" class="icon-check"></i> <strong>50,000</strong> requests/tháng</li>
+              <li><i data-lucide="check" class="icon-check"></i> Vượt hạn mức: <strong>$0.001 / request</strong></li>
+              <li><i data-lucide="check" class="icon-check"></i> Môi trường Production & Sandbox</li>
+              <li><i data-lucide="check" class="icon-check"></i> SLA cam kết 99.9% uptime</li>
+              <li><i data-lucide="check" class="icon-check"></i> Hỗ trợ qua email trong 24 giờ</li>
+            </ul>
+            <button class="btn-primary btn-full" onclick="scrollToCalculator()">Đăng Ký Gói</button>
+          </div>
+
+          <!-- Scale Plan -->
+          <div class="pricing-card" id="price-card-scale">
+            <div class="plan-header">
+              <span class="plan-name">Scale-up</span>
+              <div class="plan-price"><span class="currency">$</span>149<span class="period">/tháng</span></div>
+              <p class="plan-summary">Dành cho các website thương mại điện tử quy mô lớn, tải cao.</p>
+            </div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><i data-lucide="check" class="icon-check"></i> <strong>300,000</strong> requests/tháng</li>
+              <li><i data-lucide="check" class="icon-check"></i> Vượt hạn mức: <strong>$0.0006 / request</strong></li>
+              <li><i data-lucide="check" class="icon-check"></i> Môi trường Production & Sandbox</li>
+              <li><i data-lucide="check" class="icon-check"></i> SLA cam kết 99.95% uptime</li>
+              <li><i data-lucide="check" class="icon-check"></i> GPU dedicated lanes cho AI</li>
+              <li><i data-lucide="check" class="icon-check"></i> Hỗ trợ qua điện thoại & chat</li>
+            </ul>
+            <button class="btn-secondary btn-full" onclick="scrollToCalculator()">Đăng Ký Gói</button>
+          </div>
+        </div>
+
+        <!-- Interactive Calculator Card -->
+        <div class="calculator-card" id="price-calculator">
+          <div class="calc-header">
+            <i data-lucide="calculator" class="calc-icon"></i>
+            <div>
+              <h3>Bộ Công Cụ Tính Giá Tương Tác (Overage & Tier Calculator)</h3>
+              <p>Trượt thanh bên dưới để ước tính số lượng API requests hàng tháng và tìm gói cước tối ưu nhất cho bạn.</p>
+            </div>
+          </div>
+          <div class="calc-body">
+            <div class="slider-container">
+              <div class="slider-labels">
+                <span class="label-min">1,000</span>
+                <span class="label-current" id="calc-requests-val">100,000 requests</span>
+                <span class="label-max">1,000,000+</span>
+              </div>
+              <input type="range" id="requests-slider" min="1000" max="1000000" step="5000" value="100000" class="range-slider">
+            </div>
+            <div class="calc-results">
+              <div class="result-box suggested-tier">
+                <span class="result-title">Gói cước đề xuất</span>
+                <span class="result-value" id="calc-suggested-plan">Developer Plan</span>
+              </div>
+              <div class="result-box total-cost">
+                <span class="result-title">Ước tính chi phí / tháng</span>
+                <span class="result-value text-glow" id="calc-total-cost">$79.00</span>
+              </div>
+            </div>
+            <div class="calc-breakdown" id="calc-breakdown-text">
+              Gói bao gồm: $29 (50,000 requests) + Phí vượt gói (Pay-per-call): $50.00 (50,000 requests vượt gói x $0.001)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: INTERACTIVE API REFERENCE (DOCS) -->
+    <section id="tab-docs" class="tab-content" role="tabpanel">
+      <div class="docs-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="docs-sidebar">
+          <div class="sidebar-category">BẮT ĐẦU</div>
+          <ul class="sidebar-links">
+            <li><a href="#intro" class="sidebar-link active" data-doc-target="intro">Giới thiệu chung</a></li>
+            <li><a href="#authentication" class="sidebar-link" data-doc-target="authentication">Xác thực tài khoản</a></li>
+            <li><a href="#errors" class="sidebar-link" data-doc-target="errors">Mã lỗi hệ thống</a></li>
+          </ul>
+
+          <div class="sidebar-category">DỊCH VỤ API TÍCH HỢP AI</div>
+          <ul class="sidebar-links">
+            <li>
+              <a href="#endpoint-search" class="sidebar-link" data-doc-target="endpoint-search">
+                <span class="method-badge get">GET</span>Tìm kiếm AI (Semantic)
+              </a>
+            </li>
+            <li>
+              <a href="#endpoint-recommend" class="sidebar-link" data-doc-target="endpoint-recommend">
+                <span class="method-badge post">POST</span>Đề xuất sản phẩm
+              </a>
+            </li>
+            <li>
+              <a href="#endpoint-checkout" class="sidebar-link" data-doc-target="endpoint-checkout">
+                <span class="method-badge post">POST</span>Smart Checkout
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Main Documentation Column -->
+        <article class="docs-main" id="docs-content-container">
+          
+          <!-- Introduction -->
+          <div class="doc-section active" id="doc-intro">
+            <h2 class="doc-title">Giới thiệu chung</h2>
+            <p>Hệ thống **AI E-Commerce API Suite** cung cấp các giải pháp mạnh mẽ tích hợp trí tuệ nhân tạo trực tiếp vào website bán hàng của bạn. Chúng tôi hỗ trợ tìm kiếm sản phẩm bằng ngôn ngữ tự nhiên, gợi ý sản phẩm cá nhân hóa độ chính xác cao và tối ưu hóa giỏ hàng (Smart Checkout).</p>
+            <p>Tất cả API được xây dựng trên chuẩn **RESTful**, sử dụng giao thức bảo mật bắt buộc là **HTTPS** và trả về định dạng dữ liệu duy nhất là **JSON**.</p>
+            
+            <h3>Base URL</h3>
+            <div class="code-inline-container">
+              <code class="code-inline">https://sandbox.api.aiecom.vn/v1</code>
+            </div>
+            
+            <div class="alert-box note">
+              <div class="alert-icon"><i data-lucide="info"></i></div>
+              <div class="alert-content">
+                <strong>Môi trường Sandbox:</strong> Mọi yêu cầu test trong quá trình phát triển nên gửi tới Base URL Sandbox ở trên. Dữ liệu là mock nhưng cấu trúc Schema hoàn toàn trùng khớp với môi trường Production chính thức.
+              </div>
+            </div>
+          </div>
+
+          <!-- Authentication -->
+          <div class="doc-section" id="doc-authentication">
+            <h2 class="doc-title">Xác thực tài khoản</h2>
+            <p>Mọi request gửi tới API cần chứa API Key bí mật nằm trong Header HTTP. API Key của bạn bắt đầu bằng tiền tố <code>sk_live_</code> cho môi trường thật và <code>sk_test_</code> cho môi trường Sandbox.</p>
+            <div class="alert-box warning">
+              <div class="alert-icon"><i data-lucide="alert-triangle"></i></div>
+              <div class="alert-content">
+                <strong>Bảo mật khóa API:</strong> Hãy giữ khóa API của bạn cẩn thận. Không nhúng trực tiếp API Key vào mã nguồn Frontend (Client-side JavaScript). Hãy gọi API thông qua Backend Proxy của bạn.
+              </div>
+            </div>
+            <h3>Header yêu cầu</h3>
+            <div class="code-inline-container">
+              <code class="code-inline">Authorization: Bearer YOUR_API_KEY</code>
+            </div>
+          </div>
+
+          <!-- Errors -->
+          <div class="doc-section" id="doc-errors">
+            <h2 class="doc-title">Mã lỗi hệ thống</h2>
+            <p>Chúng tôi sử dụng mã trạng thái HTTP tiêu chuẩn để báo cáo kết quả của request. Các mã lỗi trong khoảng <code>4xx</code> biểu thị lỗi phía client (thiếu tham số, sai API Key), và mã lỗi trong khoảng <code>5xx</code> biểu thị lỗi máy chủ.</p>
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Mã lỗi HTTP</th>
+                  <th>Mã lỗi JSON</th>
+                  <th>Ý nghĩa và Hướng khắc phục</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>400 Bad Request</code></td>
+                  <td><code>invalid_parameters</code></td>
+                  <td>Thiếu tham số bắt buộc hoặc kiểu dữ liệu không hợp lệ.</td>
+                </tr>
+                <tr>
+                  <td><code>401 Unauthorized</code></td>
+                  <td><code>authentication_failed</code></td>
+                  <td>API Key không hợp lệ hoặc đã bị vô hiệu hóa.</td>
+                </tr>
+                <tr>
+                  <td><code>429 Too Many Requests</code></td>
+                  <td><code>rate_limit_exceeded</code></td>
+                  <td>Vượt quá giới hạn cuộc gọi API cho phép trong gói cước hiện tại.</td>
+                </tr>
+                <tr>
+                  <td><code>500 Server Error</code></td>
+                  <td><code>internal_error</code></td>
+                  <td>Lỗi hệ thống xử lý nội bộ. Hãy liên hệ bộ phận hỗ trợ.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Endpoint: Search AI -->
+          <div class="doc-section" id="doc-endpoint-search">
+            <div class="endpoint-header-tag">
+              <span class="method-badge get">GET</span>
+              <span class="endpoint-path">/products/search-ai</span>
+            </div>
+            <h2 class="doc-title">Tìm kiếm AI (Semantic Search)</h2>
+            <p>Thực hiện tìm kiếm ngữ nghĩa thông minh trên kho sản phẩm bằng ngôn ngữ tự nhiên. Phù hợp cho việc tích hợp tính năng chatbot mua sắm hoặc ô tìm kiếm AI thế hệ mới.</p>
+            
+            <h3>Tham số Query (Query Parameters)</h3>
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Tham số</th>
+                  <th>Kiểu dữ liệu</th>
+                  <th>Yêu cầu</th>
+                  <th>Mô tả</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>q</code></td>
+                  <td>String</td>
+                  <td>Bắt buộc</td>
+                  <td>Câu lệnh tìm kiếm tự nhiên. Ví dụ: <em>"giày chạy bộ nam êm chân màu đỏ"</em></td>
+                </tr>
+                <tr>
+                  <td><code>limit</code></td>
+                  <td>Integer</td>
+                  <td>Tùy chọn (Mặc định: 10)</td>
+                  <td>Số lượng sản phẩm trả về tối đa (Tối đa 50).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Request ví dụ</h3>
+            <div class="code-tab-container">
+              <div class="code-tab-headers">
+                <button class="code-tab-btn active" data-lang="curl">cURL</button>
+                <button class="code-tab-btn" data-lang="js">JavaScript</button>
+                <button class="code-tab-btn" data-lang="py">Python</button>
+              </div>
+              <div class="code-tab-content active" data-lang="curl">
+                <pre><code>curl -G https://sandbox.api.aiecom.vn/v1/products/search-ai \
+  -H "Authorization: Bearer sk_test_123456" \
+  --data-urlencode "q=giày chạy bộ màu đỏ" \
+  -d "limit=2"</code></pre>
+              </div>
+              <div class="code-tab-content" data-lang="js">
+                <pre><code>fetch('https://sandbox.api.aiecom.vn/v1/products/search-ai?q=giày chạy bộ màu đỏ&limit=2', {
+  headers: {
+    'Authorization': 'Bearer sk_test_123456'
+  }
+})
+.then(res => res.json())
+.then(data => console.log(data));</code></pre>
+              </div>
+              <div class="code-tab-content" data-lang="py">
+                <pre><code>import requests
+
+url = "https://sandbox.api.aiecom.vn/v1/products/search-ai"
+headers = {"Authorization": "Bearer sk_test_123456"}
+params = {"q": "giày chạy bộ màu đỏ", "limit": 2}
+
+response = requests.get(url, headers=headers, params=params)
+print(response.json())</code></pre>
+              </div>
+            </div>
+
+            <h3>Response mẫu thành công (200 OK)</h3>
+            <pre class="json-response-block"><code>{
+  "status": "success",
+  "query": "giày chạy bộ màu đỏ",
+  "matched_count": 2,
+  "data": [
+    {
+      "id": "prod_001",
+      "name": "Giày Chạy Bộ Nam SwiftRun Pro v3",
+      "category": "Footwear",
+      "price": 1250000,
+      "color": "Red",
+      "ai_score": 0.985,
+      "stock": 42
+    },
+    {
+      "id": "prod_004",
+      "name": "Giày Sneaker Thời Trang Crimson Edge",
+      "category": "Footwear",
+      "price": 890000,
+      "color": "Crimson Red",
+      "ai_score": 0.892,
+      "stock": 15
+    }
+  ]
+}</code></pre>
+          </div>
+
+          <!-- Endpoint: Recommendation AI -->
+          <div class="doc-section" id="doc-endpoint-recommend">
+            <div class="endpoint-header-tag">
+              <span class="method-badge post">POST</span>
+              <span class="endpoint-path">/recommendations</span>
+            </div>
+            <h2 class="doc-title">Đề xuất sản phẩm cá nhân hóa</h2>
+            <p>Phân tích hành vi xem/mua hàng gần đây của khách hàng để gợi ý danh sách các sản phẩm có tỷ lệ chốt đơn cao nhất.</p>
+
+            <h3>Body Parameters (JSON)</h3>
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Tham số</th>
+                  <th>Kiểu dữ liệu</th>
+                  <th>Yêu cầu</th>
+                  <th>Mô tả</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>user_id</code></td>
+                  <td>String</td>
+                  <td>Bắt buộc</td>
+                  <td>Mã khách hàng để phân tích hành vi lịch sử.</td>
+                </tr>
+                <tr>
+                  <td><code>recent_viewed_ids</code></td>
+                  <td>Array of Strings</td>
+                  <td>Tùy chọn</td>
+                  <td>Mã các sản phẩm khách hàng vừa click xem trong phiên.</td>
+                </tr>
+                <tr>
+                  <td><code>limit</code></td>
+                  <td>Integer</td>
+                  <td>Tùy chọn</td>
+                  <td>Hạn mức gợi ý trả về (Mặc định: 5).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Request ví dụ</h3>
+            <div class="code-tab-container">
+              <div class="code-tab-headers">
+                <button class="code-tab-btn active" data-lang="curl">cURL</button>
+                <button class="code-tab-btn" data-lang="js">JavaScript</button>
+                <button class="code-tab-btn" data-lang="py">Python</button>
+              </div>
+              <div class="code-tab-content active" data-lang="curl">
+                <pre><code>curl -X POST https://sandbox.api.aiecom.vn/v1/recommendations \
+  -H "Authorization: Bearer sk_test_123456" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": "usr_9988",
+    "recent_viewed_ids": ["prod_001"],
+    "limit": 2
+  }'</code></pre>
+              </div>
+              <div class="code-tab-content" data-lang="js">
+                <pre><code>fetch('https://sandbox.api.aiecom.vn/v1/recommendations', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer sk_test_123456',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    user_id: 'usr_9988',
+    recent_viewed_ids: ['prod_001'],
+    limit: 2
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));</code></pre>
+              </div>
+              <div class="code-tab-content" data-lang="py">
+                <pre><code>import requests
+
+url = "https://sandbox.api.aiecom.vn/v1/recommendations"
+headers = {
+    "Authorization": "Bearer sk_test_123456",
+    "Content-Type": "application/json"
+}
+payload = {
+    "user_id": "usr_9988",
+    "recent_viewed_ids": ["prod_001"],
+    "limit": 2
+}
+
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())</code></pre>
+              </div>
+            </div>
+
+            <h3>Response mẫu thành công (200 OK)</h3>
+            <pre class="json-response-block"><code>{
+  "status": "success",
+  "user_id": "usr_9988",
+  "recommendation_engine": "ECom-Recs-v4",
+  "data": [
+    {
+      "id": "prod_010",
+      "name": "Tất Thể Thao SwiftPerformance",
+      "category": "Accessories",
+      "price": 95000,
+      "recommend_reason": "Thường được mua kèm với Giày SwiftRun Pro v3",
+      "score": 0.957
+    },
+    {
+      "id": "prod_012",
+      "name": "Bình Nước Giữ Nhiệt Vacuum Flask",
+      "category": "Accessories",
+      "price": 320000,
+      "recommend_reason": "Có xu hướng quan tâm đồ thể thao chạy bộ",
+      "score": 0.815
+    }
+  ]
+}</code></pre>
+          </div>
+
+          <!-- Endpoint: Smart Checkout -->
+          <div class="doc-section" id="doc-endpoint-checkout">
+            <div class="endpoint-header-tag">
+              <span class="method-badge post">POST</span>
+              <span class="endpoint-path">/checkout/smart</span>
+            </div>
+            <h2 class="doc-title">Smart Checkout (Giỏ hàng thông minh)</h2>
+            <p>Phân tích giỏ hàng của người dùng, tự động đề xuất quà tặng kèm, mã giảm giá tối ưu nhất bằng AI và tính toán chi phí vận chuyển tối ưu.</p>
+
+            <h3>Body Parameters (JSON)</h3>
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Tham số</th>
+                  <th>Kiểu dữ liệu</th>
+                  <th>Yêu cầu</th>
+                  <th>Mô tả</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>items</code></td>
+                  <td>Array of Objects</td>
+                  <td>Bắt buộc</td>
+                  <td>Danh sách sản phẩm trong giỏ hàng. Mỗi object chứa <code>id</code> và <code>quantity</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>shipping_address</code></td>
+                  <td>String</td>
+                  <td>Bắt buộc</td>
+                  <td>Địa chỉ nhận hàng để AI tính toán quãng đường và chi phí ship.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Response mẫu thành công (200 OK)</h3>
+            <pre class="json-response-block"><code>{
+  "status": "success",
+  "order_valuation": {
+    "subtotal": 1250000,
+    "shipping_fee": 15000,
+    "discount": 50000,
+    "total": 1215000
+  },
+  "ai_applied_insights": {
+    "applied_coupon": "AI_ECOM_SHIPPING_FREE",
+    "savings_reason": "Áp dụng mã vận chuyển tối ưu cho khu vực nội thành Hà Nội",
+    "suggested_cross_sell": {
+      "id": "prod_010",
+      "name": "Tất Thể Thao SwiftPerformance",
+      "discounted_price": 50000,
+      "cross_sell_message": "Thêm tất thể thao SwiftPerformance chỉ với 50.000đ (tiết kiệm 45.000đ)!"
+    }
+  }
+}</code></pre>
+          </div>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 3: DYNAMIC SANDBOX PLAYGROUND -->
+    <section id="tab-sandbox" class="tab-content" role="tabpanel">
+      <div class="sandbox-layout">
+        <!-- Input Control Panel -->
+        <div class="sandbox-panel form-panel">
+          <div class="panel-header">
+            <i data-lucide="sliders"></i>
+            <h3>Cấu Hình Request Sandbox</h3>
+          </div>
+          
+          <form id="sandbox-form" class="sandbox-form" onsubmit="event.preventDefault();">
+            <!-- API Key -->
+            <div class="form-group">
+              <label for="sb-api-key">API Authorization Key</label>
+              <div class="input-with-icon">
+                <i data-lucide="key" class="input-icon"></i>
+                <input type="text" id="sb-api-key" value="sk_test_51MzZAIeCommerceE" placeholder="Nhập API Key của bạn...">
+              </div>
+              <small class="form-hint">Nhập ký tự bất kỳ để test. Xóa sạch để giả lập lỗi 401 Unauthorized.</small>
+            </div>
+
+            <!-- Endpoint Selector -->
+            <div class="form-group">
+              <label for="sb-endpoint">Endpoint API</label>
+              <select id="sb-endpoint" class="custom-select" onchange="onEndpointChange()">
+                <option value="search" data-method="GET">GET /products/search-ai</option>
+                <option value="recommend" data-method="POST">POST /recommendations</option>
+                <option value="checkout" data-method="POST">POST /checkout/smart</option>
+              </select>
+            </div>
+
+            <!-- Query Parameters (Dynamic search-only field) -->
+            <div class="form-group" id="group-search-query">
+              <label for="sb-query">Query tìm kiếm (q)</label>
+              <input type="text" id="sb-query" value="giày chạy bộ màu đỏ" placeholder="Ví dụ: điện thoại iphone 14, áo thun trắng...">
+            </div>
+
+            <!-- Body parameters (Dynamic recommendations/checkout JSON body area) -->
+            <div class="form-group hidden" id="group-json-body">
+              <label for="sb-json-body">Request Body (JSON)</label>
+              <textarea id="sb-json-body" rows="6" class="code-textarea">{
+  "user_id": "usr_9988",
+  "recent_viewed_ids": ["prod_001"],
+  "limit": 2
+}</textarea>
+            </div>
+
+            <!-- Limit parameter (For search and recommendations) -->
+            <div class="form-group" id="group-limit">
+              <label for="sb-limit">Giới hạn kết quả (limit)</label>
+              <input type="number" id="sb-limit" value="2" min="1" max="10">
+            </div>
+
+            <button type="button" class="btn-primary btn-full btn-lg" id="btn-send-sandbox" onclick="sendSandboxRequest()">
+              <i data-lucide="send"></i> Gửi Request Lên Sandbox
+            </button>
+          </form>
+        </div>
+
+        <!-- Output Terminal Display -->
+        <div class="sandbox-panel terminal-panel">
+          <div class="panel-header header-terminal">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">RESPONSE CONSOLE</div>
+            <button class="btn-clear-console" onclick="clearConsole()" title="Xóa màn hình console">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+          
+          <div class="terminal-display">
+            <!-- Simulated raw logs -->
+            <div class="terminal-body" id="terminal-body">
+              <div class="terminal-line system-msg">> Sẵn sàng kết nối tới Sandbox của AI E-Commerce API Suite.</div>
+              <div class="terminal-line system-msg">> Nhấp vào "Gửi Request Lên Sandbox" bên trái để xem kết quả phản hồi thời gian thực.</div>
+              <div class="terminal-line system-msg">> Thử nghiệm xóa API Key để giả lập xác thực không thành công.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Premium Footer -->
+  <footer class="footer-area">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <i data-lucide="cpu" class="logo-icon"></i>
+        <span>AI E-Commerce API Suite - HW12</span>
+      </div>
+      <p class="footer-text">Thiết kế bởi học viên lớp INT3505 - Phục vụ bài thực hành HW12 môn Công nghệ Web & Dịch vụ Web.</p>
+      <div class="footer-links">
+        <a href="Strategy_and_Monetization_Proposal.md" target="_blank" class="footer-link-item">
+          <i data-lucide="file-text"></i> Tài liệu Chiến Lược (Markdown)
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link app.js -->
+  <script src="app.js"></script>
+</body>
+</html>
